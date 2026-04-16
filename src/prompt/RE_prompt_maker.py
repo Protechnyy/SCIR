@@ -13,16 +13,17 @@ def en_re(data):
         else:
             missing = item['missing']
             redundancy = item['redundancy']
+            # Feedback-Driven Optimization
             try:
-                if redundancy == "{}" and missing == "{}":
+                if redundancy == {} and missing == {}: # Positive: 跳过，不进入下一轮修正
                     continue
-                elif redundancy == "{}" :
+                elif redundancy == {}: # 有漏抽但无错抽，进入下一轮修正
                     addition = '2.Check if there are any unextracted relationships in the generated results (e.g., "{}"), and make corresponding modifications to the returned results.'
                     addition = addition.format(missing)
-                elif missing == "{}":
+                elif missing == {}: # 有错抽但无漏抽，进入下一轮修正
                     addition = '2.Check whether the generated results contain incorrectly extracted relationships or non-existent relationships (e.g., "{}"), and make corresponding corrections to the returned results.'
                     addition = addition.format(redundancy)
-                else:
+                else: # 既有漏抽又有错抽，进入下一轮修正
                     addition = '2.Check if there are any unextracted relationships in the generated results (e.g., "{}"), and make corresponding corrections to the returned results.\n3.Check whether the generated results contain incorrectly extracted relationships or non-existent relationships (e.g., "{}"), and make corresponding corrections to the returned results.'
                     addition = addition.format(missing,redundancy)
             except:
@@ -42,16 +43,17 @@ def zh_re(data):
         else:
             missing = item['missing']
             redundancy = item['redundancy']
+            # 反馈驱动优化模块
             try:
-                if redundancy == "{}" and missing == "{}":
+                if redundancy == {} and missing == {}: # 正常：跳过，不进入下一轮修正
                     continue
-                elif redundancy == "{}" :
+                elif redundancy == {}: # 有漏抽但无错抽，进入下一轮修正
                     addition = '2.检查生成结果中是否存在关系未抽取（例如：\"{}\"等关系），并进行相应的修改。'
                     addition = addition.format(missing)
-                elif missing == "{}":
+                elif missing == {}: # 有错抽但无漏抽，进入下一轮修正
                     addition = '2.检查生成结果中是否存在关系抽取错误或抽取了不存在的关系（例如：\"{}\"等关系），并进行相应的修改。'
                     addition = addition.format(redundancy)
-                else:
+                else: # 既有漏抽又有错抽，进入下一轮修正
                     addition = '2.检查生成结果中是否存在关系未抽取（例如：\"{}\"等关系），并进行相应的修改。\n3.检查生成结果中是否存在关系抽取错误或抽取了不存在的关系（例如：\"{}\"等关系），并进行相应的修改。'
                     addition = addition.format(missing,redundancy)
             except:

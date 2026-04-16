@@ -14,12 +14,12 @@ def en_ner(data):
             missing = item['missing']
             redundancy = item['redundancy']
             try:
-                if redundancy == "{}" and missing == "{}":
+                if redundancy == {} and missing == {}:
                     continue
-                elif redundancy == "{}" :
+                elif redundancy == {}:
                     addition = '2.Check whether there is unextracted entity in the generated result (for example: entities such as "{}"), and make corresponding modifications to the returned result.'
                     addition = addition.format(missing)
-                elif missing == "{}":
+                elif missing == {}:
                     addition = '2.Check whether there are errors in extracting entity or whether non-existent entity are extracted in the generated results (for example: entities such as "{}"), and make corresponding modifications to the returned results.'
                     addition = addition.format(redundancy)
                 else:
@@ -43,12 +43,12 @@ def zh_ner(data):
             missing = item['missing']
             redundancy = item['redundancy']
             try:
-                if redundancy == "{}" and missing == "{}":
+                if redundancy == {} and missing == {}:
                     continue
-                elif redundancy == "{}" :
+                elif redundancy == {}:
                     addition = '2.检查生成结果中是否存在实体未抽取（例如：\"{}\"等实体），并进行相应的修改。'
                     addition = addition.format(missing)
-                elif missing == "{}":
+                elif missing == {}:
                     addition = '2.检查生成结果中是否存在实体抽取错误或抽取了不存在的实体（例如：\"{}\"等实体），并进行相应的修改。'
                     addition = addition.format(redundancy)
                 else:

@@ -14,12 +14,12 @@ def zh_ee(data):
             missing = item['missing']
             redundancy = item['redundancy']
             try:
-                if redundancy == "{}" and missing == "{}":
+                if redundancy == {} and missing == {}:
                     continue
-                elif redundancy == "{}" :
+                elif redundancy == {}:
                     addition = '2.检查生成结果中arguments是否存在属性值未抽取（例如：\"{}\"等属性），并对返回结果进行相应的修改。'
                     addition = addition.format(missing)
-                elif missing == "{}":
+                elif missing == {}:
                     addition = '2.检查生成结果中arguments是否存属性的属性值抽取错误或抽取了不存在的属性值（例如：\"{}\"等属性），并对返回结果进行相应的修改。'
                     addition = addition.format(redundancy)
                 else:
@@ -43,12 +43,12 @@ def en_ee(data):
             missing = item['missing']
             redundancy = item['redundancy']
             try:
-                if redundancy == "{}" and missing == "{}":
+                if redundancy == {} and missing == {}:
                     continue
-                elif redundancy == "{}" :
+                elif redundancy == {}:
                     addition = '2. Check if there are unextracted property values in the generated result (for example: properties such as "{}"), and modify the returned result accordingly.'
                     addition = addition.format(missing)
-                elif missing == "{}":
+                elif missing == {}:
                     addition = '2. Check if there are property value extraction errors or extraction of non-existent property values in the generated result (for example: properties such as "{}"), and modify the returned result accordingly.'
                     addition = addition.format(redundancy)
                 else:
