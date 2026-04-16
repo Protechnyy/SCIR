@@ -31,6 +31,7 @@ if __name__ == '__main__':
     K = 2
 
     data = load_data(input_path)
+    # 初始轮直接用数据集原始的item['instruction']作为prompt做纯净抽取
     data = run_generate(data,'base')
     out_dir = template_output.format(index)
     with open(out_dir, 'w', encoding='utf-8') as f_out:

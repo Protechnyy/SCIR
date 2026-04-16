@@ -82,11 +82,14 @@ def run_generate(llm,tokenizer,sampling_params,messages_batch,lora_path,task,pat
                         answer[name] = pair[name]
                 except:
                     continue
+        # item['redundancy'] = {"rel_name": [{head,tail}, ...]}  or  {}  or  "FormatError"
+        # item['missing']    = {"rel_name": [{head,tail}, ...]}  or  {}  or  "FormatError"
         item[path] = answer
     return data
 
 
 def check(data,task):
+    # 格式化检查输入
     inputs = format_check(data,task)
 
     base_model_name = "./model/Qwen3-4B/model"  # 以通义千问为例，可替换为其他预训练模型
